@@ -5,6 +5,7 @@ express = require('express')
 app = express()
 // connect db goes here
 const authenticateUser = require('./middleware/authentication');
+app.use(express.json());
 
 const PORT = 3000
 
