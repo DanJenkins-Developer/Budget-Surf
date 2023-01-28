@@ -11,7 +11,7 @@ app.use(express.json());
 
 // routes
 
-// error handling middle 
+// error handling middleware
 
 
 const PORT = 3000
