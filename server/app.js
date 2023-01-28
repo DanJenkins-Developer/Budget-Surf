@@ -7,4 +7,16 @@ app.get('/', (req, res) => {
     res.send('Hello world')
 })
 
-app.listen(PORT)
+
+const start = () => {
+    try {
+        app.listen(PORT)  
+        console.log(`Server is listening on port ${PORT}`); 
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+start()
+
+
