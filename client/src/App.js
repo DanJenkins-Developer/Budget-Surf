@@ -1,4 +1,4 @@
-import { PieChart } from 'react-minimal-pie-chart';
+import DonutChart from 'react-donut-chart';
 import './App.css';
 import BudgetCard from './BudgetCard';
 
@@ -6,15 +6,23 @@ function App() {
   return (
     <div className="App">
         <h2>Pie Chart Test</h2>
-        <PieChart
-          radius={30}
-          center={[50,50]}
+        
+        <DonutChart
           data={[
-            { title: 'One', value: 10, color: '#E38627'},
-            { title: 'Two', value: 15, color: '#C13C37' },
-            { title: 'Three', value: 20, color: '#6A2135' },
+            {
+              label: 'Give you up',
+              value: 25,
+            },
+            {
+              label: '',
+              value: 75,
+              isEmpty: true,
+            },
           ]}
-        />
+      />;
+        
+        <BudgetCard name="Food" amount={30} max={40}/>
+
     </div>
     
   );
