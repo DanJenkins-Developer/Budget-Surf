@@ -26,11 +26,12 @@ app.get('/', (req, res) => {
     res.send('<h1>Hello world</h1>')
 })
 
-
-const start = () => {
+const start = async () => {
     try {
-        app.listen(PORT)  
-        console.log(`Server is listening on port ${PORT}`); 
+        await connectDB(process.env.MONGO_URI);
+    app.listen(PORT, () =>
+      console.log(`Server is listening on port ${PORT}...`)
+    );
     } catch (error) {
         console.log(error);
     }
