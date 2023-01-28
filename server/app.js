@@ -1,5 +1,10 @@
+require('dotenv').config()
+require('express-async-errors');
+
 express = require('express')
 app = express()
+// connect db goes here
+const authenticateUser = require('./middleware/authentication');
 
 const PORT = 3000
 
