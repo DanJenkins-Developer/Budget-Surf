@@ -68,8 +68,12 @@ const updateUser = async (req, res) => {
     }
   })
 }
+const logoutUser = async (req, res) => {
+  res.send('Logout user')
+}
 module.exports = {
   register,
   login,
   updateUser,
+  logoutUser,
 }
