@@ -9,6 +9,7 @@ app.use(express.json());
 
 // router imports
 const authRouter = require('./routes/authRoute');
+const expenseRouter = require('./routes/expenseRoute')
 // error handler imports
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
