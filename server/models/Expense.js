@@ -9,7 +9,7 @@ const Expence = new mongoose.Schema(
             maxLength: 50,
         },
         amount: {
-            type: int, // Money validation?
+            type: Number, // Money validation?
             required: [true, 'Please provide an amount']
         },
         expenceType: {
