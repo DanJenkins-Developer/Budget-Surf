@@ -14,3 +14,4 @@ router.route('/').post(createExpense).get(getAllExpenses)
 // stats/budget route tbd
 router.route(':id').get(getExpense).delete(deleteExpense).patch(updateExpense)
 
+module.exports = router
