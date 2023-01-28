@@ -7,6 +7,13 @@ app = express()
 const authenticateUser = require('./middleware/authentication');
 app.use(express.json());
 
+// router imports
+
+// routes
+
+// error handling middle 
+
+
 const PORT = 3000
 
 app.get('/', (req, res) => {
