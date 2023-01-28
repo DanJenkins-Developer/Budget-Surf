@@ -3,7 +3,7 @@ const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError} = require('../errors')
 const mongoose = require('mongoose')
 
-const getAllExpense = async (req, res) => {
+const getAllExpenses = async (req, res) => {
     res.send('All expenses')
 }
 const getExpense = async (req, res) => {
@@ -20,7 +20,7 @@ const deleteExpense = async (req, res) => {
 }
 
 module.exports = {
-    getAllExpense,
+    getAllExpenses,
     getExpense,
     createExpense,
     updateExpense,
