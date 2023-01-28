@@ -8,7 +8,6 @@ app.get('/', (req, res) => {
 })
 
 
-
 const start = () => {
     try {
         app.listen(PORT)  
