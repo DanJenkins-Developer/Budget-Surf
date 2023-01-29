@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import axios from "axios";
 
-const baseURL = "http://localhost:5000/api/v1/auth/register"
+const baseURL = "http://localhost:6000/api/v1/auth/register"
 
 export default function (props) {
   const [inputs, setInputs] = useState({});
