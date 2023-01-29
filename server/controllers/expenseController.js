@@ -2,6 +2,7 @@ const Expense = require('../models/Expense')
 const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError} = require('../errors')
 const mongoose = require('mongoose')
+const { JsonWebTokenError } = require('jsonwebtoken')
 
 const getAllExpenses = async (req, res) => {
 
@@ -70,10 +71,33 @@ const deleteExpense = async (req, res) => {
     res.status(StatusCodes.OK).send()
 }
 
+const showStats = async (req, res) => {
+    let stats = await Expense.aggregate([
+        {$match: {createdBy: mongoose.Types.ObjectId(req.user.userId)}},
+        {$group: {_id: '$expenseType', count: {$sum: 1}}}
+    ])
+
+    stats = stats.reduce((acc, curr) => {
+        const {_id: name, count} = curr
+        acc[title] = count
+        return acc
+    }, {})
+
+    const defaultStats = {
+        Utility: stats.Utility || 0,
+        Transportation: stats.Transportation || 0,
+        Leisure: stats.Leisure || 0, 
+        General: stats.General || 0,
+    }
+    console.log(defaultStats);
+    res.status(StatusCodes.OK).json({defaultStats})
+}
+
 module.exports = {
     getAllExpenses,
     getExpense,
     createExpense,
     updateExpense,
-    deleteExpense
+    deleteExpense,
+    showStats,
 }
