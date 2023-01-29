@@ -3,7 +3,7 @@ import DonutChart from 'react-donut-chart';
 import BudgetCard from './components/BudgetCard';
 import Login from './components/Login';
 import Register from './components/Register';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Route, Routes } from 'react-router-dom';
 
 function App() {
   return ( 
@@ -11,20 +11,35 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />}/>
             <Route path='/register' element={<Register />}/>
+            {/* <Route path='/budget' element={<BudgetCard name="Food" amount={201} max={400}/>}/> */}
             <Route path='/donut' element={<DonutChart
                 data={[
                   {
-                    label: 'Give you up',
+                    label: 'Food',
                     value: 25,
                   },
                   {
-                    label: '',
-                    value: 75,
-                    isEmpty: true,
-                  }
+                    label: 'Entertainment',
+                    value: 25,
+                  },
+                  {
+                    label: 'Savings/Investments',
+                    value: 25,
+                  },
+                  {
+                    label: 'Housing',
+                    value: 25,
+                  },
+                  {
+                    label: 'Transportation',
+                    value: 25,
+                  },
+                  {
+                    label: 'Miscellaneous',
+                    value: 25,
+                  },
                 ]}
               />}/>       
-            <Route path='/budget' element={<BudgetCard name="Food" amount={201} max={400}/>}/>
           </Routes>
           </div>
   );

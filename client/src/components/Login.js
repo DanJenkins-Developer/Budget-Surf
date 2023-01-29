@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function (props) {
   return (
     <div className="Auth-form-container">
-      <img src={ require('./templogo.png') } />
+      <img src={ require('../templogo.png') } alt="Logo" />
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
@@ -36,7 +36,7 @@ export default function (props) {
           </div>
           <div className="d-flex justify-content-center">
           <p className="">
-            Don't have an account? <li><Link to="/register">Register Here</Link></li>
+            Don't have an account? <Link to="/register">Register Here</Link>
           </p>
           </div>
         </div>
