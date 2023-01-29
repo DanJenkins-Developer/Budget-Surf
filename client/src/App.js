@@ -21,7 +21,7 @@ function App() {
           ]}
       />;
         
-        <BudgetCard name="Food" amount={30} max={40}/>
+        <BudgetCard name="Food" amount={201} max={400}/>
 
     </div>
     
