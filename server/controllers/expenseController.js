@@ -84,7 +84,6 @@ const showStats = async (req, res) => {
         return acc
     }, {})
 
-    console.log(stats)
     const defaultStats = {
         housing: stats.housing || 0,
         miscellaneous: stats.miscellaneous || 0,
@@ -131,8 +130,6 @@ const showStats = async (req, res) => {
         acc[title] = count
         return acc
     }, {})
-
-    //console.log(totalExpensePerCategory)
 
     res.status(StatusCodes.OK).json({ defaultStats, monthlyExpensesByTotal, totalExpenses, totalExpensePerCategory })
 }
