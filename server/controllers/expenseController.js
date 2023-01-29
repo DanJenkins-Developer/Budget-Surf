@@ -14,7 +14,6 @@ const getAllExpenses = async (req, res) => {
 
     res.status(StatusCodes.OK).json({expenses})
     console.log(queryObject);
-    //res.send('All expenses')
 }
 const getExpense = async (req, res) => {
     const {
