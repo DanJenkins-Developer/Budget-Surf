@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function (props) {
   return (
     <div className="Auth-form-container">
-      <img src={ require('./templogo.png') } />
+      <img src={ require('../templogo.png') } />
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
