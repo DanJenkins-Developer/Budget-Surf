@@ -1,5 +1,6 @@
 import './App.css';
 import DonutChart from 'react-donut-chart';
+import axios from 'axios'
 import BudgetCard from './components/BudgetCard';
 import Login from './components/Login';
 import Register from './components/Register';
