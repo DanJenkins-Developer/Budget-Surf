@@ -84,11 +84,14 @@ const showStats = async (req, res) => {
         return acc
     }, {})
 
+    console.log(stats)
     const defaultStats = {
-        Utility: stats.Utility || 0,
-        Transportation: stats.Transportation || 0,
-        Leisure: stats.Leisure || 0,
-        General: stats.General || 0,
+        housing: stats.housing || 0,
+        miscellaneous: stats.miscellaneous || 0,
+        savings: stats.savings || 0,
+        transportation: stats.transportation || 0,
+        food: stats.food || 0,
+        entertainment: stats.entertainment || 0
     }
 
     let monthlyExpensesByTotal = await Expense.aggregate([
