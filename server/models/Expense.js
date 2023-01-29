@@ -12,7 +12,7 @@ const ExpenseSchema = new mongoose.Schema(
             type: Number, // Money validation?
             required: [true, 'Please provide an amount']
         },
-        expenceType: {
+        expenseType: {
             type: String,
             enum: ['Utility', 'Transportation', 'Leisure', 'General'],
             default: 'General',
