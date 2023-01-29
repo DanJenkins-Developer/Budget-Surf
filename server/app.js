@@ -1,6 +1,6 @@
 require('dotenv').config()
 require('express-async-errors');
-
+const helmet = require('helmet');
 express = require('express')
 cors = require('cors')
 app = express()
@@ -16,6 +16,7 @@ const expenseRouter = require('./routes/expenseRoute')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+app.use(helmet())
 app.use(cors())
 
 // routes
