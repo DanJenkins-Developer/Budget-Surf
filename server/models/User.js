@@ -29,6 +29,11 @@ const UserSchema = new mongoose.Schema({
     maxlength: 20,
     default: 'lastName'
   },
+  monthlyBudget: {
+    type: Number,
+    min: 0,
+    default: 0
+  }
 })
 
 UserSchema.pre('save', async function () {
