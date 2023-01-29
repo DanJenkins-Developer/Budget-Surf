@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function (props) {
   return (
     <div className="Auth-form-container">
@@ -27,13 +29,13 @@ export default function (props) {
           <div className="d-grid gap-2 mt-3">
             <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary w-25">
-              Submit
+              <Link to="/donut">Submit</Link>
             </button>
             </div>
           </div>
           <div className="d-flex justify-content-center">
           <p className="">
-            Don't have an account? <a href="#">Register here</a>
+            Don't have an account? <li><Link to="/donut">Test donut stuff</Link></li>
           </p>
           </div>
         </div>

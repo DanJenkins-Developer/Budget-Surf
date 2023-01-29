@@ -6,14 +6,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return ( 
-      <Router>
         <div className="App">
           <Routes>
-            <Route path='/'>
-              <Login />
-            </Route>
-            <Route>
-              <DonutChart
+            <Route path='/' element={<Login />}/>
+            <Route path='/donut' element={<DonutChart
                 data={[
                   {
                     label: 'Give you up',
@@ -25,12 +21,10 @@ function App() {
                     isEmpty: true,
                   }
                 ]}
-              />
-            </Route>
-            <BudgetCard name="Food" amount={201} max={400}/>
+              />}/>       
+            <Route path='/budget' element={<BudgetCard name="Food" amount={201} max={400}/>}/>
           </Routes>
           </div>
-        </Router>
   );
 }
 
