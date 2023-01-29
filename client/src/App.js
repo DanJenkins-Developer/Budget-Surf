@@ -1,7 +1,8 @@
-import DonutChart from 'react-donut-chart';
 import './App.css';
+import DonutChart from 'react-donut-chart';
 import BudgetCard from './BudgetCard';
 import Login from './Login';
+import Register from './Register';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path='/' element={<Login />}/>
+            <Route path='/register' element={<Register />}/>
             <Route path='/donut' element={<DonutChart
                 data={[
                   {
