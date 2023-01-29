@@ -2,10 +2,12 @@ require('dotenv').config()
 require('express-async-errors');
 
 express = require('express')
+cors = require('cors')
 app = express()
 const connectDB = require('./db/connect');
 const authenticateUser = require('./middleware/authentication');
 app.use(express.json());
+app.use(cors)
 
 // router imports
 const authRouter = require('./routes/authRoute');
