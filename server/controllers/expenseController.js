@@ -20,16 +20,9 @@ const getExpense = async (req, res) => {
     res.send('Expense')
 }
 const createExpense = async (req, res) => {
-    params = {
-        name: 'Car Payment',
-        amount: 75,
-        expenseType: 'Transportation',
-        createdBy: '63d589a25f12e184ec291444'
-    }
-
-    const expense = await Expense.create(params)
+    req.body.createdBy = req.user.userId
+    const expense = await Expense.create(req.body)
     res.status(StatusCodes.CREATED).json({expense})
-    // res.send('Create Expense')
 }
 const updateExpense = async (req, res) => {
     res.send('update Expense')
