@@ -101,6 +101,7 @@ const showStats = async (req, res) => {
     //     { $group: { _id: '$expenseType', count: { $sum: 1 } } }
     // ])
 
+
     let monthlyExpensesByTotal = await Expense.aggregate([
         { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
         {
@@ -131,7 +132,20 @@ const showStats = async (req, res) => {
 
     totalExpenses = totalExpenses.reduce((a, b) => ({ count: a.count + b.count }))
 
-    res.status(StatusCodes.OK).json({ defaultStats, monthlyExpensesByTotal, totalExpenses })
+    let totalExpensePerCategory = await Expense.aggregate([
+        { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+        { $group: { _id: '$expenseType', count: { $sum: '$amount' } } }
+    ])
+
+    totalExpensePerCategory = totalExpensePerCategory.reduce((acc, curr) => {
+        const { _id: title, count } = curr
+        acc[title] = count
+        return acc
+    }, {})
+
+    console.log(totalExpensePerCategory)
+
+    res.status(StatusCodes.OK).json({ defaultStats, monthlyExpensesByTotal, totalExpenses, totalExpensePerCategory })
 }
 
 module.exports = {
