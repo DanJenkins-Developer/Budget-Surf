@@ -91,11 +91,27 @@ const showStats = async (req, res) => {
         General: stats.General || 0,
     }
 
-    let monthlyExpenses = await Expense.aggregate([
+    let monthlyExpensesByTotal = await Expense.aggregate([
         { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
-
+        {
+            $group: {
+                _id: {year: {$year: '$createdAt'}, month: {$month: '$createdAt'}},
+                count: { $sum: '$amount' }
+            }
+        },
+        {$sort: {count: -1}}
     ])
 
+    monthlyExpensesByTotal = monthlyExpensesByTotal.map((item) => {
+        const {
+            _id: {year, month}, count
+        } = item
+        const date = moment().month(month - 1).year(year).format('MMM Y')
+        return {date, count}
+    })
+
+    const month = new Date().getMonth()
+    console.log(month + 1);
 
     let totalExpenses = await Expense.aggregate([
         { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
@@ -104,7 +120,8 @@ const showStats = async (req, res) => {
     ])
 
     totalExpenses = totalExpenses.reduce((a, b) => ({ count: a.count + b.count }))
-    res.status(StatusCodes.OK).json({ defaultStats, totalExpenses })
+
+    res.status(StatusCodes.OK).json({ defaultStats, monthlyExpensesByTotal, totalExpenses })
 }
 
 module.exports = {
