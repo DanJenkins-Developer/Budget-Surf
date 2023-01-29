@@ -91,6 +91,16 @@ const showStats = async (req, res) => {
         General: stats.General || 0,
     }
 
+    // let monthlyExpensesByCategory = await Expense.aggregate([
+    //     { 
+    //         $match: { 
+    //             createdBy: mongoose.Types.ObjectId(req.user.userId),
+    //             createdAt: {}
+    //         } 
+    //     },
+    //     { $group: { _id: '$expenseType', count: { $sum: 1 } } }
+    // ])
+
     let monthlyExpensesByTotal = await Expense.aggregate([
         { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
         {
@@ -110,8 +120,8 @@ const showStats = async (req, res) => {
         return {date, count}
     })
 
-    const month = new Date().getMonth()
-    console.log(month + 1);
+    // const month = new Date().getMonth()
+    // console.log(month + 1);
 
     let totalExpenses = await Expense.aggregate([
         { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
