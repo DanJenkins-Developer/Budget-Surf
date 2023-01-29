@@ -2,6 +2,7 @@ import DonutChart from 'react-donut-chart';
 import './App.css';
 import BudgetCard from './BudgetCard';
 import Login from './Login';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
