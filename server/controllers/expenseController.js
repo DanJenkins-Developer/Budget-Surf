@@ -1,10 +1,20 @@
-const Expence = require('../models/Expense')
+const Expense = require('../models/Expense')
 const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError} = require('../errors')
 const mongoose = require('mongoose')
 
 const getAllExpenses = async (req, res) => {
-    res.send('All expenses')
+
+    queryObject = {
+        createdBy: req.user.userId
+    }
+
+    let result = Expense.find(queryObject)
+    const expenses = await result
+
+    res.status(StatusCodes.OK).json({expenses})
+    console.log(queryObject);
+    //res.send('All expenses')
 }
 const getExpense = async (req, res) => {
     res.send('Expense')
