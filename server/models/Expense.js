@@ -15,7 +15,7 @@ const ExpenseSchema = new mongoose.Schema(
         expenseType: {
             type: String,
             // enum: ['Utility', 'Transportation', 'Leisure', 'General'],
-            enum: ['food', 'entertainment', 'housing', 'savings/investments', 'transportation', 'miscellaneous'],
+            enum: ['food', 'entertainment', 'housing', 'savings', 'transportation', 'miscellaneous'],
             default: 'miscellaneous',
         },
         createdBy: {
