@@ -8,9 +8,10 @@ const register = async (req, res) => {
   res.status(StatusCodes.CREATED).json({
     user: {
       email: user.email,
-      lastName: user.lastName,
+      //lastName: user.lastName,
       location: user.location,
       name: user.name,
+      monthlyBudget: user.monthlyBudget,
       token
     }
   })
@@ -35,9 +36,10 @@ const login = async (req, res) => {
   res.status(StatusCodes.OK).json({
     user: {
       email: user.email,
-      lastName: user.lastName,
+      //lastName: user.lastName,
       location: user.location,
       name: user.name,
+      monthlyBudget: user.monthlyBudget,
       token
     }
   })
@@ -46,6 +48,7 @@ const login = async (req, res) => {
 const updateUser = async (req, res) => {
   const { email, name, lastName, location } = req.body
   console.log(req.user);
+  // if (!email || !name || !lastName || !location) {
   if (!email || !name || !lastName || !location) {
     throw new BadRequestError('Please provide all values')
   }
