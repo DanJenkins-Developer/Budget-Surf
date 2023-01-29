@@ -11,9 +11,9 @@ const {
 
 } = require('../controllers/expenseController')
 
-router.route('/').post(createExpense).get(getAllExpenses)
+router.route('/').post(testUser, createExpense).get(getAllExpenses)
 // stats/budget route tbd
 router.route('/stats').get(showStats)
-router.route('/:id').get(getExpense).delete(deleteExpense).patch(updateExpense)
+router.route('/:id').get(getExpense).delete(testUser, deleteExpense).patch(testUser, updateExpense)
 
 module.exports = router
