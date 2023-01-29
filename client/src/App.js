@@ -5,26 +5,30 @@ import Login from './Login';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
+  return ( 
+      <Router>
+        <div className="App">
         <Login />
-        <DonutChart
-          data={[
-            {
-              label: 'Give you up',
-              value: 25,
-            },
-            {
-              label: '',
-              value: 75,
-              isEmpty: true,
-            },
-          ]}
-      />;
-        
-        <BudgetCard name="Food" amount={30} max={40}/>
-    </div>
-    
+          <Switch>
+            <Route>
+              <DonutChart
+                data={[
+                  {
+                    label: 'Give you up',
+                    value: 25,
+                  },
+                  {
+                    label: '',
+                    value: 75,
+                    isEmpty: true,
+                  },
+                ]}
+              />
+            </Route>
+            <BudgetCard name="Food" amount={30} max={40}/>
+          </Switch>
+          </div>
+        </Router>    
   );
 }
 
