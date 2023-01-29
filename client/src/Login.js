@@ -35,7 +35,7 @@ export default function (props) {
           </div>
           <div className="d-flex justify-content-center">
           <p className="">
-            Don't have an account? <li><Link to="/donut">Test donut stuff</Link></li>
+            Don't have an account? <li><Link to="/register">Register Here</Link></li>
           </p>
           </div>
         </div>
