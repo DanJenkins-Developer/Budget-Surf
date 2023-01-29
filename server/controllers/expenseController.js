@@ -39,7 +39,19 @@ const updateExpense = async (req, res) => {
     res.send('update Expense')
 }
 const deleteExpense = async (req, res) => {
-    res.send('Delete Expense')
+    const {
+        user: {userId},
+        params: {id: expenseId}
+    } = req
+
+    const expense = await Expense.findByIdAndRemove({
+        _id: expenseId,
+        createdBy: userId,
+    })
+    if (!expense) {
+        throw new NotFoundError(`No expense with id ${expenseId}`)
+    }
+    res.status(StatusCodes.OK).send()
 }
 
 module.exports = {
