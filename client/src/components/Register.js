@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import axios from "axios";
 
-const baseURL = "localhost:5000/api/v1/auth/register"
+const baseURL = "http://localhost:5000/api/v1/auth/register"
 
 export default function (props) {
   const [inputs, setInputs] = useState({});
@@ -21,7 +21,7 @@ export default function (props) {
     setInputs(values => ({...values, [name]: value}))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputs);
     const params = {
@@ -29,12 +29,19 @@ export default function (props) {
       email : inputs.email,
       password : inputs.password
   }
-    axios
-      .post(baseURL, JSON.stringify(params))
+  console.log(params)
+  try {
+    await axios
+      .post(baseURL, params)
       .then((response) => {
         //setUser(response.data);
         console.log(response)
-      });
+      }).catch((err) =>  {
+        console.log("error in promise: " + err)
+      })
+    } catch (err) {
+      console.log("error in try catch")
+    }
   }
 
   return (
