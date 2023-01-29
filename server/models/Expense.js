@@ -22,7 +22,8 @@ const ExpenseSchema = new mongoose.Schema(
             ref: 'User',
             required: [true, 'Please provide user'],
         }
-    }
+    },
+    {timestamps: true}
 )
 
 module.exports = mongoose.model('Expense', ExpenseSchema)
