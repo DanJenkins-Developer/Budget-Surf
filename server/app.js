@@ -9,18 +9,20 @@ app.use(express.json());
 
 // router imports
 const authRouter = require('./routes/authRoute');
+const expenseRouter = require('./routes/expenseRoute')
 // error handler imports
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 // routes
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/expense', authenticateUser, expenseRouter)
 // error handling middleware
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 
 
-const PORT = 3000
+const PORT = 5000
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello world</h1>')
