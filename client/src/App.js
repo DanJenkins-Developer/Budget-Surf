@@ -1,12 +1,12 @@
 import DonutChart from 'react-donut-chart';
 import './App.css';
 import BudgetCard from './BudgetCard';
+import Login from './Login';
 
 function App() {
   return (
     <div className="App">
-        <h2>Pie Chart Test</h2>
-        
+        <Login />
         <DonutChart
           data={[
             {
@@ -22,7 +22,6 @@ function App() {
       />;
         
         <BudgetCard name="Food" amount={30} max={40}/>
-
     </div>
     
   );
