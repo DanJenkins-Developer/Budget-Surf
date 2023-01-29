@@ -2,7 +2,8 @@ const Expense = require('../models/Expense')
 const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError} = require('../errors')
 const mongoose = require('mongoose')
-const { JsonWebTokenError } = require('jsonwebtoken')
+const moment = require('moment')
+
 
 const getAllExpenses = async (req, res) => {
 
@@ -78,7 +79,7 @@ const showStats = async (req, res) => {
     ])
 
     stats = stats.reduce((acc, curr) => {
-        const {_id: name, count} = curr
+        const {_id: title, count} = curr
         acc[title] = count
         return acc
     }, {})
@@ -89,8 +90,15 @@ const showStats = async (req, res) => {
         Leisure: stats.Leisure || 0, 
         General: stats.General || 0,
     }
-    console.log(defaultStats);
-    res.status(StatusCodes.OK).json({defaultStats})
+
+    let totalExpenses = await Expense.aggregate([
+        {$match: {createdBy: mongoose.Types.ObjectId(req.user.userId)}},
+        {$group: {_id: '$expenseType', count: {$sum: '$amount'}}},
+        {$sort:  {count: -1}}
+    ])
+        
+    totalExpenses = totalExpenses.reduce((a, b) => ({count: a.count + b.count}))
+    res.status(StatusCodes.OK).json({defaultStats, totalExpenses})
 }
 
 module.exports = {
