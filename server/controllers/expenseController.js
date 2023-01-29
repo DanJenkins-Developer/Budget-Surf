@@ -17,7 +17,18 @@ const getAllExpenses = async (req, res) => {
     //res.send('All expenses')
 }
 const getExpense = async (req, res) => {
-    res.send('Expense')
+    const {
+        user: {userId},
+        params: {id: expenseId}
+    } = req
+    const expense = await Expense.findOne({
+        _id: expenseId,
+        createdBy: userId
+    })
+    if (!expense) {
+        throw new NotFoundError(`No job with id ${expenseId}`)
+    }
+    res.status(StatusCodes.OK).json({expense})
 }
 const createExpense = async (req, res) => {
     req.body.createdBy = req.user.userId
