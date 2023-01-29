@@ -85,10 +85,12 @@ const showStats = async (req, res) => {
     }, {})
 
     const defaultStats = {
-        Utility: stats.Utility || 0,
-        Transportation: stats.Transportation || 0,
-        Leisure: stats.Leisure || 0,
-        General: stats.General || 0,
+        housing: stats.housing || 0,
+        miscellaneous: stats.miscellaneous || 0,
+        savings: stats.savings || 0,
+        transportation: stats.transportation || 0,
+        food: stats.food || 0,
+        entertainment: stats.entertainment || 0
     }
 
     let monthlyExpensesByTotal = await Expense.aggregate([
@@ -128,8 +130,6 @@ const showStats = async (req, res) => {
         acc[title] = count
         return acc
     }, {})
-
-    //console.log(totalExpensePerCategory)
 
     res.status(StatusCodes.OK).json({ defaultStats, monthlyExpensesByTotal, totalExpenses, totalExpensePerCategory })
 }
