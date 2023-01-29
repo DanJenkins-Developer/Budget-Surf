@@ -97,7 +97,7 @@ const showStats = async (req, res) => {
         { $sort: { count: -1 } }
     ])
 
-    totalExpenses = totalExpenses.reduce((a, b) => ({ total: a.count + b.count }))
+    totalExpenses = totalExpenses.reduce((a, b) => ({ count: a.count + b.count }))
     res.status(StatusCodes.OK).json({ defaultStats, totalExpenses })
 }
 
