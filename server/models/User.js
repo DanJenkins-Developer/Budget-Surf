@@ -23,12 +23,12 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Please provide password'],
     minlength: 6,
   },
-  lastName: {
-    type: String,
-    trim: true,
-    maxlength: 20,
-    default: 'lastName'
-  },
+  // lastName: {
+  //   type: String,
+  //   trim: true,
+  //   maxlength: 20,
+  //   default: 'lastName'
+  // },
   monthlyBudget: {
     type: Number,
     min: 0,
